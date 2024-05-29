@@ -2,7 +2,7 @@ import React from "react";
 
 export default function MyNav() {
     return (
-        <nav className="flex justify-between items-center p-6 bg-stone-950">
+        <nav className="flex justify-between items-center px-[30px] py-[18px] bg-stone-950">
             <div className="text-indigo-400"><a className="font-bold text-xl" href="#">LOGO</a></div>
             <div>
                 <ul className="flex gap-10">
