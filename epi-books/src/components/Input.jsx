@@ -1,15 +1,16 @@
 import React, {useState} from "react";
 
-export default function Input() {
-    const [testo, setTesto] = useState('');
+export default function Input({testo, handleChange}) {
+
     return (
-        <>
+        <div className='flex items-center justify-center mt-[30px]'>
             <input 
+                placeholder='Inserisci libro'
                 type="text" 
                 value={testo} 
-                onChange={(e) => setTesto(e.target.value)}
+                onChange={handleChange}
+                className='bg-slate-200 rounded-lg p-[15px] w-[40%] focus:outline-none'
             />
-            <p>Il tuo testo è: {testo}</p>
-        </>
+      </div>
     )
 }

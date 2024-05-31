@@ -1,40 +1,23 @@
 import SingleBook from './SingleBook';
 import React, {useState} from "react";
-import fantasy from '../fantasy.json';
+import Input from './Input';
+
 
 export default function AllTheBooks(props) {
 
   const [testo, setTesto] = useState(''); 
-  const [books, setBooks] = useState(props.books) 
-  
-  function handleChange(value) {
-    setTesto(value)
-  
 
-    const booksFiltered = fantasy.filter((book) => {
-      return (
-        book.title.toLowerCase().includes(value)
-      )
-    })
-    setBooks(booksFiltered);
-  }
+  const handleChange = (e) => setTesto(e.target.value);
+  
 
   return (
     <>
-    <div className='flex items-center justify-center mt-[30px]'>
-
-      <input 
-        placeholder='Inserisci libro'
-        type="text" 
-        value={testo} 
-        onChange={(e) => handleChange(e.target.value)}
-        className='bg-slate-200 rounded-lg p-[15px] w-[40%] focus:outline-none'
-        required
-      />
-    </div>
+      <Input testo={testo} handleChange={handleChange}/>
     
-      <main className='grid grid-cols-5 gap-y-[50px] my-[50px] px-[100px]'>
-        {books.map(book => (
+      <main className='grid grid-cols-4 gap-y-[50px] my-[50px] px-[100px]'>
+        {props.books
+        .filter(book => book.title.toLowerCase().includes(testo))
+        .map(book => (
               <SingleBook book={book} key={book.asin}/>
         ))}
       </main>
