@@ -14,7 +14,7 @@ export default function AllTheBooks(props) {
     <>
       <Input testo={testo} handleChange={handleChange}/>
     
-      <main className='grid grid-cols-4 gap-y-[50px] my-[50px] px-[100px]'>
+      <main className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-3 mt-5'>
         {props.books
         .filter(book => book.title.toLowerCase().includes(testo))
         .map(book => (
