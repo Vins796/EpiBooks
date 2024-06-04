@@ -8,6 +8,7 @@ export default function CommentArea({asin}) {
 
     const [recensioni, setRecensioni] = useState([]);
 
+
     useEffect(() => {
         fetch(url + asin + '/comments/', {
             headers: {
@@ -19,9 +20,9 @@ export default function CommentArea({asin}) {
     }, [asin])
 
     return (
-        <>  
+        <div>  
             <CommentList recensioni={recensioni} asin={asin} setRecensioni={setRecensioni}/>
             <AddComment recensioni={recensioni} setRecensioni={setRecensioni} asin={asin}/>
-        </>
+        </div>
     )
 }

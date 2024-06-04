@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function MyFooter() {
     return (     
         <footer className="dark:bg-gray-900 w-full p-10">
