@@ -20,7 +20,7 @@ export default function CommentArea({asin}) {
 
     return (
         <>  
-            <CommentList recensioni={recensioni} asin={asin}/>
+            <CommentList recensioni={recensioni} asin={asin} setRecensioni={setRecensioni}/>
             <AddComment recensioni={recensioni} setRecensioni={setRecensioni} asin={asin}/>
         </>
     )

@@ -7,10 +7,10 @@ export default function AddComment({recensioni, setRecensioni, asin}) {
 
     const [valoreInput, setValoreInput] = useState('');
     const [rate, setRate] = useState(0);
+    const newComment = {comment: valoreInput, rate: rate, elementId: asin};
 
     function createComment(e) {
         e.preventDefault();
-        const newComment = {comment: valoreInput, rate: rate, elementId: asin};
         console.log(newComment);
 
         fetch(url, {
@@ -32,6 +32,22 @@ export default function AddComment({recensioni, setRecensioni, asin}) {
             )
     }
 
+    // const updateComments = (id, newComment) => {
+    //     // PUT all'API per aggiornare l'elemento con il nuovo nome
+    //     fetch(`${url}/${id}`, {
+    //       method: "PUT",
+    //       headers: {
+    //         'Authorization': `Bearer ${apiKey}`,
+    //         'Content-Type': "application/json", // Specifica il tipo di contenuto come JSON
+    //       },
+    //       body: JSON.stringify({ comment: newComment}), // Convertiamo l'oggetto aggiornato in una stringa JSON
+    //     })
+    //       .then((response) => response.json()) // Convertiamo la risposta in formato JSON
+    //       .then((data) =>
+    //         setValoreInput(comments.map((comment) => (comment.id === id ? data : comment)))
+    //       ); // Aggiorniamo la lista degli elementi con quello aggiornato
+    //   };
+
     return (
         <form className="flex flex-col gap-y-4 items-center justify-center mb-5">
             <input
@@ -48,7 +64,7 @@ export default function AddComment({recensioni, setRecensioni, asin}) {
                 <option value={4}>4</option>
                 <option value={5}>5</option>
             </select>
-            <button className="bg-slate-200" onClick={createComment}>Cliccamih...</button>
+            <button className="bg-slate-200 w-full" onClick={createComment}>Crea</button>
         </form>
     )
 }
