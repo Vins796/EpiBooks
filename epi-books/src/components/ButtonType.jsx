@@ -3,12 +3,12 @@ import history from '../history.json';
 import horror from '../horror.json';
 import AllTheBooks from './AllTheBooks';
 
-export default function ButtonType({type}) {
+export default function ButtonType({type, testo}) {
     return (
         <>
-            {type === 'fantasy' && <AllTheBooks books={fantasy} />}
-            {type === 'history' && <AllTheBooks books={history} /> }
-            {type === 'horror' && <AllTheBooks books={horror} /> }
+            {type === 'fantasy' && <AllTheBooks testo={testo} books={fantasy} />}
+            {type === 'history' && <AllTheBooks testo={testo} books={history} /> }
+            {type === 'horror' && <AllTheBooks testo={testo} books={horror} /> }
         </>
     )
 }

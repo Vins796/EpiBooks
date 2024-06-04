@@ -1,8 +1,8 @@
-import React from "react";
+import Input from './Input'
 
-export default function MyNav() {
+export default function MyNav({testo, handleChange}) {
     return (
-        <nav className="flex justify-between items-center px-[30px] py-[18px] bg-stone-950">
+        <nav className="flex justify-around items-center py-[18px] bg-stone-950">
             <div className="text-indigo-400"><a className="font-bold text-xl" href="#">LOGO</a></div>
             <div>
                 <ul className="flex gap-10">
@@ -11,7 +11,7 @@ export default function MyNav() {
                     <li><a className="text-white hover:text-indigo-400" href="#">Browse</a></li>
                 </ul>
             </div>
-            <div className="text-indigo-400 border-red-100"><a className="text-xl font-bold" href="#">U</a></div>
+            <Input testo={testo} handleChange={handleChange}/>
         </nav>
     )
 }

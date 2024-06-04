@@ -10,14 +10,19 @@ import { useState } from 'react';
 
 
 export default function App() {
+
   const [type, setType] = useState('fantasy');
+
+  const [testo, setTesto] = useState('');
+  const handleChange = (e) => setTesto(e.target.value);
+
   return (
     <>       
-      <MyNav />
+      <MyNav testo={testo} setTesto={setTesto} handleChange={handleChange}/>
       <Welcome />
       <Button setType={setType} />
       <ButtonType type={type} />
-      <AllTheBooks books={fantasy} />
+      <AllTheBooks books={fantasy} testo={testo} />
       <MyFooter />        
     </>
   )
