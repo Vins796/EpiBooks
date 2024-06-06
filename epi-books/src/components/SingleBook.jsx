@@ -9,7 +9,7 @@ export default function SingleBook ({book}) {
         <div className="mx-auto">
             <div 
                 style={{border: selected ? '2px solid red' : 'none'}}
-                className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-auto text-center w-[350px]" 
+                className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-auto text-center w-[350px] h-[570px] mb-5" 
                 onClick={() => setSelected(!selected) }>
                 
             

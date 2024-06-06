@@ -1,6 +1,6 @@
 export default function MyFooter() {
     return (     
-        <footer className="dark:bg-gray-900 w-full p-10">
+        <footer className="dark:bg-gray-900 w-full p-10 sticky bottom-0">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <a href="#">
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hover:text-indigo-400">EpiBooks</span>

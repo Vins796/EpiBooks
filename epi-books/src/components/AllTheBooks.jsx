@@ -34,7 +34,7 @@ export default function AllTheBooks({ books, testo }) {
     setIsLoading(true);
     const timer = setTimeout(() => {
       const filtered = books.filter(book => book.title.toLowerCase().includes(testo));
-      setFilteredBooks(filtered);
+      setFilteredBooks(filtered.slice(0, 12));
       setIsLoading(false);
     }, 500); // Simulate a delay for filtering
 
@@ -46,7 +46,7 @@ export default function AllTheBooks({ books, testo }) {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <main className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-3 mt-5 '>
+        <main className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-y-5 mt-[50px]'>
           {filteredBooks.map(book => (
             <SingleBook book={book} key={book.asin} />
           ))}
