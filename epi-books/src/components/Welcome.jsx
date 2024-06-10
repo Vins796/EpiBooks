@@ -9,7 +9,7 @@ export default function Welcome() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
           </div>
-          <h1 className='ms-[10px] text-3xl'>Benvenuto sul mio sito!</h1>
+          <h1 className='ms-[10px] text-3xl'>Sfoglia il catalogo</h1>
       </div>
   )
 }

@@ -1,7 +1,7 @@
 export default function NightMode() {
     return (
         <div>
-            <button className="bg-slate-300" onClick={toggleTheme}>Theme</button>
+            <button onClick={toggleTheme}>Theme</button>
         </div>
     )
 }

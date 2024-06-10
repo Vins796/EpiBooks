@@ -1,20 +1,20 @@
 import { useState } from "react"
 import CommentArea from "./CommentArea";
 
-export default function SingleBook ({book}) {
+export default function SingleBook ({ book, selected, setSelected }) {
 
-    const [selected, setSelected] = useState(false);
+    // const [selected, setSelected] = useState(false);
 
     return (
         <div className="mx-auto">
             <div 
-                style={{border: selected ? '2px solid red' : 'none'}}
-                className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-auto text-center w-[350px] h-[570px] mb-5" 
-                onClick={() => setSelected(!selected) }>
+                style={{border: selected === book.asin ? '2px solid red' : 'none'}}
+                className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-auto text-center w-[350px] h-[400px] mb-5" 
+                onClick={() => setSelected(book.asin) }>
                 
             
                   <a href="#">
-                      <img className="rounded-t-lg h-[400px] w-full" src={book.img} alt={book.title} />
+                      <img className="rounded-lg h-full w-full" src={book.img} alt={book.title} />
                   </a>
                   <div class="p-5">
                       <a href="#">
@@ -24,7 +24,7 @@ export default function SingleBook ({book}) {
                       <span className="mb-3 text-gray-700 dark:text-gray-400 capitalize">{book.category}</span> 
                   </div>
             </div> 
-            {selected && <CommentArea asin={book.asin}/>}            
+            {/* {selected && <CommentArea asin={book.asin}/>}             */}
         </div>
     )
 }

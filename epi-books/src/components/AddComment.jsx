@@ -35,12 +35,13 @@ export default function AddComment({recensioni, setRecensioni, asin}) {
     return (
         <form className="flex flex-col gap-y-4 items-center justify-center mb-5">
             <input
+                className="border p-3 mt-3"
                 placeholder="Scrivi recensione..."
                 type="text"
                 value={valoreInput}
                 onChange={(e) => setValoreInput(e.target.value)}
             ></input>
-            <select value={rate} name="valutazione" onChange={(e) => setRate(parseInt(e.target.value))}>
+            <select className="w-full p-3" value={rate} name="valutazione" onChange={(e) => setRate(parseInt(e.target.value))}>
                 <option value={0}>Select rate</option>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
@@ -48,7 +49,7 @@ export default function AddComment({recensioni, setRecensioni, asin}) {
                 <option value={4}>4</option>
                 <option value={5}>5</option>
             </select>
-            <button className="bg-slate-200 w-full" onClick={createComment}>Crea</button>
+            <button className="bg-sky-400 w-full" onClick={createComment}>Aggiungi Commento</button>
         </form>
     )
 }
