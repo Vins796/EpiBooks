@@ -1,7 +1,7 @@
-// Importo stile css app
+// IMPORTO LO STILE DI APP
 import './App.css';
 
-// Importo i componenti
+// IMPORTO I COMPONENTI
 import MyNav from './components/MyNav';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -10,24 +10,28 @@ import Error from './pages/Error';
 import MyFooter from './components/MyFooter';
 
 
-// Importo gli stati
+// IMPORTO GLI STATI
 import { useState } from 'react';
 import { ThemeContext } from './modules/Context';
 
+// RREACT ROUTER DOM
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+// COMPONENTE APP.JSX
 export default function App() {
 
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('dark');
 
   const [type, setType] = useState('fantasy');
 
   const [testo, setTesto] = useState('');
+
   const handleChange = (e) => setTesto(e.target.value);
 
   return (
     <Router>     
       <ThemeContext.Provider value={[theme, setTheme]}>
+        {/* NAVBAR */}
         <MyNav testo={testo} setTesto={setTesto} handleChange={handleChange}/>
 
         <Routes>
@@ -37,10 +41,11 @@ export default function App() {
           <Route path='/*' element={<Error />}></Route>
         </Routes>
 
+        {/* FOOTER */}
         <MyFooter /> 
       </ThemeContext.Provider>               
     </Router>
   )
-}
+};
 
 

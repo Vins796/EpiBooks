@@ -5,7 +5,7 @@ export default function CommentList({recensioni, asin, setRecensioni}) {
         <>
             <ul className="text-center max-h-[200px] overflow-y-scroll">
                 {recensioni.map((recensione) => (
-                    <SingleComment asin={asin} recensione={recensione} recensioni={recensioni} setRecensioni={setRecensioni}/>
+                    <SingleComment key={asin} recensione={recensione} recensioni={recensioni} setRecensioni={setRecensioni}/>
                 ))}
             </ul>
         </>

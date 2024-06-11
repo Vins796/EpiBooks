@@ -3,11 +3,10 @@ import CommentArea from './CommentArea';
 
 import { useState, useEffect } from 'react';
 import { CircularProgress } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
 export default function AllTheBooks({ books, testo }) {
 
-  const navigazione = useNavigate();
+  
   const [isLoading, setIsLoading] = useState(true);
   const [filteredBooks, setFilteredBooks] = useState([]);
 
@@ -19,7 +18,7 @@ export default function AllTheBooks({ books, testo }) {
       const filtered = books.filter(book => book.title.toLowerCase().includes(testo));
       setFilteredBooks(filtered.slice(0, 12));
       setIsLoading(false);
-    }, 500); // Simulate a delay for filtering
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [books, testo]);
@@ -29,7 +28,7 @@ export default function AllTheBooks({ books, testo }) {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <section className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-y-5 gap-5 mt-[50px]'>
+        <section className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-y-[50px] gap-5 mt-[50px]'>
           {filteredBooks.map(book => (
             <SingleBook book={book} key={book.asin} selected={selected} setSelected={setSelected}/>
           ))}

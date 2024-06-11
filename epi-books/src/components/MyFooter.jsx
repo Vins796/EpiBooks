@@ -1,9 +1,9 @@
 export default function MyFooter() {
     return (     
-        <footer className="dark:bg-gray-900 w-full p-8 sticky bottom-0">
+        <footer className="bg-stone-950 dark:bg-gray-900 w-full p-8 fixed bottom-0">
                 <div className="sm:flex sm:items-center sm:justify-between">
-                    <a href="#">
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hover:text-indigo-400">EpiBooks</span>
+                    <a href="/">
+                        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-purple-400 hover:text-indigo-400">EpiBooks</span>
                     </a>
                     <ul className="flex flex-wrap gap-6 items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                         <li>

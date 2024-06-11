@@ -1,30 +1,23 @@
-import { useState } from "react"
-import CommentArea from "./CommentArea";
-
 export default function SingleBook ({ book, selected, setSelected }) {
-
-    // const [selected, setSelected] = useState(false);
 
     return (
         <div className="mx-auto">
             <div 
-                style={{border: selected === book.asin ? '2px solid red' : 'none'}}
-                className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-auto text-center w-[350px] h-[400px] mb-5" 
-                onClick={() => setSelected(book.asin) }>
-                
+                style={{border: selected === book.asin ? '2px solid blue' : 'none'}}
+                className="border border-gray-200 rounded-lg shadow mx-auto text-center w-[350px] h-[450px] mb-[120px]" 
+                onClick={() => setSelected(book.asin) }>                
             
                   <a href="#">
-                      <img className="rounded-lg h-full w-full" src={book.img} alt={book.title} />
+                      <img className="h-full w-full rounded-t-lg" src={book.img} alt={book.title} />
                   </a>
-                  <div class="p-5">
+                  <div class="bg-slate-800 p-5 h-[120px] rounded-b-lg whitespace-nowrap">
                       <a href="#">
-                          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{book.title}</h5>
+                          <h5 className="mb-2 text-2xl font-bold tracking-tight text-white text-ellipsis overflow-hidden">{book.title}</h5>
                       </a>
-                      <span className="mb-3 me-[20px] text-gray-700 dark:text-gray-400">{book.price}</span>
-                      <span className="mb-3 text-gray-700 dark:text-gray-400 capitalize">{book.category}</span> 
+                      <span className="mb-3 me-[20px] dark:text-gray-400 text-white hover:text-red-600 cursor-pointer">{book.price} $</span>
+                      <span className="mb-3 dark:text-gray-400 capitalize text-white hover:text-red-600 cursor-pointer">{book.category}</span> 
                   </div>
             </div> 
-            {/* {selected && <CommentArea asin={book.asin}/>}             */}
         </div>
     )
 }
