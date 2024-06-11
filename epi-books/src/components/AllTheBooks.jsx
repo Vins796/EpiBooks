@@ -24,11 +24,11 @@ export default function AllTheBooks({ books, testo }) {
   }, [books, testo]);
 
   return (
-    <main className='flex justify-center gap-[50px]'>
+    <main className='flex justify-center gap-[50px] max-sm:justify-center'>
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <section className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-y-[50px] gap-5 mt-[50px]'>
+        <section className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3 gap-y-[50px] gap-5 mt-[50px]'>
           {filteredBooks.map(book => (
             <SingleBook book={book} key={book.asin} selected={selected} setSelected={setSelected}/>
           ))}

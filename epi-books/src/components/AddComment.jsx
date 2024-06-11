@@ -33,7 +33,7 @@ export default function AddComment({recensioni, setRecensioni, asin}) {
     }
 
     return (
-        <form className="flex flex-col gap-y-4 items-center justify-center mb-5">
+        <form className="flex flex-col gap-y-4 items-center justify-center mb-5 max-sm:hidden">
             <input
                 className="border p-3 mt-3"
                 placeholder="Scrivi recensione..."
