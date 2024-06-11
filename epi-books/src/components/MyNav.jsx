@@ -2,8 +2,9 @@ import { useContext } from 'react'
 import Input from './Input'
 import { ThemeContext } from '../modules/Context'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
 
-export default function MyNav({ testo, handleChange, navLink }) {
+export default function MyNav({ testo, handleChange }) {
 
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
@@ -20,9 +21,22 @@ export default function MyNav({ testo, handleChange, navLink }) {
             <div className="text-indigo-400 uppercase"><a className="font-bold text-xl" href="#">EpiBooks</a></div>
             <div>
                 <ul className="flex gap-10">
-                    <li><a className={classNames('hover:text-indigo-400', themeCtx === 'dark' ? 'text-white' : 'text-black')} href="#">Home</a></li>
-                    <li><a className={classNames('hover:text-indigo-400', themeCtx === 'dark' ? 'text-white' : 'text-black')} href="#">About</a></li>
-                    <li><a className={classNames('hover:text-indigo-400', themeCtx === 'dark' ? 'text-white' : 'text-black')} href="#">Browse</a></li>
+                    <li>
+                        <a className={classNames('hover:text-indigo-400', themeCtx === 'dark' ? 'text-white' : 'text-black')} href="#">
+                            <Link to='/'>Home</Link>
+                        </a>
+                    </li>
+                    <li>
+                        <a className={classNames('hover:text-indigo-400', themeCtx === 'dark' ? 'text-white' : 'text-black')} href="#">
+                            <Link to='/about'>About</Link>
+                        </a>
+                    </li>
+                    <li>
+                        <a className={classNames('hover:text-indigo-400', themeCtx === 'dark' ? 'text-white' : 'text-black')} href="#">
+                            <Link to='/contatti'>Contatti</Link>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
             <Input testo={testo} handleChange={handleChange}/>

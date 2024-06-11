@@ -1,9 +1,13 @@
-import { useState, useEffect } from 'react';
 import SingleBook from './SingleBook';
-import { CircularProgress } from "@mui/material";
 import CommentArea from './CommentArea';
 
+import { useState, useEffect } from 'react';
+import { CircularProgress } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
 export default function AllTheBooks({ books, testo }) {
+
+  const navigazione = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [filteredBooks, setFilteredBooks] = useState([]);
 
