@@ -27,7 +27,7 @@ export default function CommentArea({asin}) {
     }, [])
 
     return (
-        <div className="mt-5">  
+        <div>  
             {isLoading && <CircularProgress />}
             <CommentList recensioni={recensioni} asin={asin} setRecensioni={setRecensioni}/>
             <AddComment recensioni={recensioni} setRecensioni={setRecensioni} asin={asin}/>

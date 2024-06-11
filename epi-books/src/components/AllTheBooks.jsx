@@ -31,7 +31,7 @@ export default function AllTheBooks({ books, testo }) {
           ))}
         </section>
       )}
-        <section>
+        <section className='mt-[50px]'>
         <CommentArea asin={selected}/>
         </section>
     </main>
