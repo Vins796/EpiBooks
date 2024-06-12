@@ -6,6 +6,7 @@ import MyNav from './components/MyNav';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contatti from './pages/Contatti';
+import BookDetails from './pages/BookDetails';
 import Error from './pages/Error';
 import MyFooter from './components/MyFooter';
 
@@ -38,6 +39,7 @@ export default function App() {
           <Route path='/' element={<Home type={type} setType={setType} testo={testo}/>}></Route>
           <Route path='/about' element={<About />}></Route>
           <Route path='/contatti' element={<Contatti />}></Route>
+          <Route path='/details/:id' element={<BookDetails />}></Route>
           <Route path='/*' element={<Error />}></Route>
         </Routes>
 

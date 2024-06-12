@@ -27,10 +27,14 @@ export default function CommentArea({asin}) {
     }, [asin])
 
     return (
-        <div className="mt-5">   
-            {isLoading && <CircularProgress />}
-            <CommentList recensioni={recensioni} asin={asin} setRecensioni={setRecensioni}/>
-            <AddComment recensioni={recensioni} setRecensioni={setRecensioni} asin={asin}/>
-        </div>
+        <>
+            {
+                asin && <div className='flex flex-col'>
+                <AddComment recensioni={recensioni} setRecensioni={setRecensioni} asin={asin}/>
+                {isLoading && <CircularProgress />}
+                <CommentList recensioni={recensioni} asin={asin} setRecensioni={setRecensioni}/>
+                </div>
+            }
+        </>
     )
 }
