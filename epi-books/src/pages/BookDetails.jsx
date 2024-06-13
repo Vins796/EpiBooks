@@ -54,10 +54,10 @@ export default function BookDetails() {
     
     
       return (
-        <>
-            <div className="mx-auto mt-[70px]">
+        <div className="flex justify-center items-center gap-[50px]">
+            <div className="mt-[70px]">
                 <div 
-                    className="border border-gray-200 rounded-lg shadow mx-auto text-center w-[350px] h-[450px] mb-[160px]" 
+                    className="border border-gray-200 rounded-lg shadow mx-auto text-center w-[350px] h-[450px] mb-[140px]" 
                     onClick={() => setSelected(book.asin) }>                
                 
                     <a href="#">
@@ -71,14 +71,14 @@ export default function BookDetails() {
                             <span className="mb-3 me-[20px] dark:text-gray-400 text-white hover:text-red-600 cursor-pointer">{book.price} $</span>
                             <span className="mb-3 dark:text-gray-400 capitalize text-white hover:text-red-600 cursor-pointer">{book.category}</span>                        
                         </div>
-                        <button className="mt-3">
-                            <Link to='/'>BACK</Link>
+                        <button className="mt-3 bg-red-500">
+                            <Link to='/' className="text-white">BACK</Link>
                         </button>
                     </div>
                 </div> 
             </div>
             <CommentArea asin={id}/>
-        </>
+        </div>
     );
     
 }

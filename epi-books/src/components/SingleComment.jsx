@@ -33,8 +33,8 @@ export default function SingleComment({recensione, recensioni, setRecensioni}) {
 
     return (
         <>
-            <li className="mb-5 p-3" key={recensione._id}><span>{recensione.comment}</span></li>
-            <div className="flex flex-col gap-y-2 p-3">
+            <li className="mb-5 p-3 border" key={recensione._id}><span>{recensione.comment}</span></li>
+            <div className="flex flex-col gap-y-2 p-3 mb-[100px]">
                 <button className="bg-yellow-200" onClick={() => updateComments(recensione._id, prompt("Modifica il commento:", recensione.comment))}>Modifica</button>
                 <button className="bg-red-500" onClick={() => deleteComments(recensione._id)}>Elimina</button>
             </div>
