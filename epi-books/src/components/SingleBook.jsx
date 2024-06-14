@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-
 export default function SingleBook ({ book, selected, setSelected }) {
 
     const navigazione = useNavigate();
@@ -10,11 +9,12 @@ export default function SingleBook ({ book, selected, setSelected }) {
     }
 
     return (
-        <div className="mx-auto">
+        <div className="mx-auto" data-testid="books-card">
             <div 
                 style={{border: selected === book.asin ? '2px solid blue' : 'none'}}
-                className="border border-gray-200 rounded-lg shadow mx-auto text-center w-[350px] h-[450px] mb-[120px]" 
-                onClick={() => setSelected(book.asin) }>                
+                className="border border-gray-200 rounded-lg shadow mx-auto text-center w-[350px] h-[450px] mb-[120px] pippo" 
+                onClick={() => setSelected(book.asin) }
+            >                         
             
                   <a href="#">
                       <img className="h-full w-full rounded-t-lg" src={book.img} alt={book.title} />

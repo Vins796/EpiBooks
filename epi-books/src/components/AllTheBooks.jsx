@@ -16,7 +16,7 @@ export default function AllTheBooks({ books, testo }) {
     setIsLoading(true);
     const timer = setTimeout(() => {
       const filtered = books.filter(book => book.title.toLowerCase().includes(testo));
-      setFilteredBooks(filtered.slice(0, 12));
+      setFilteredBooks(filtered.slice(0, 150));
       setIsLoading(false);
     }, 500);
 
@@ -24,7 +24,7 @@ export default function AllTheBooks({ books, testo }) {
   }, [books, testo]);
 
   return (
-    <main className='flex justify-center gap-[50px] max-sm:justify-center mb-[400px]'>
+    <main className='flex justify-center gap-[50px] max-sm:justify-center mb-[400px]' >
       {isLoading ? (
         <CircularProgress />
       ) : (

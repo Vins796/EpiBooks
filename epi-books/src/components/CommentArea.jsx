@@ -10,6 +10,8 @@ export default function CommentArea({asin}) {
     const [recensioni, setRecensioni] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+    console.log("crash");
+
 
     useEffect(() => {
         setIsLoading(true);
@@ -29,7 +31,7 @@ export default function CommentArea({asin}) {
     return (
         <>
             {
-                asin && <div className='flex flex-col'>
+                asin && <div className='flex flex-col' data-testid="comment-area">
                 <AddComment recensioni={recensioni} setRecensioni={setRecensioni} asin={asin}/>
                 {isLoading && <CircularProgress />}
                 <CommentList recensioni={recensioni} asin={asin} setRecensioni={setRecensioni}/>
