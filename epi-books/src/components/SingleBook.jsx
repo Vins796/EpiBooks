@@ -19,7 +19,7 @@ export default function SingleBook ({ book, selected, setSelected }) {
                   <a href="#">
                       <img className="h-full w-full rounded-t-lg" src={book.img} alt={book.title} />
                   </a>
-                  <div class="bg-slate-800 p-5 h-[150px] rounded-b-lg whitespace-nowrap">
+                  <div class="bg-slate-800 p-5 h-[160px] rounded-b-lg whitespace-nowrap">
                       <a href="#">
                           <h5 className="mb-2 text-2xl font-bold tracking-tight text-white text-ellipsis overflow-hidden">{book.title}</h5>
                       </a>
@@ -27,7 +27,7 @@ export default function SingleBook ({ book, selected, setSelected }) {
                         <span className="mb-3 me-[20px] dark:text-gray-400 text-white hover:text-red-600 cursor-pointer">{book.price} $</span>
                         <span className="mb-3 dark:text-gray-400 capitalize text-white hover:text-red-600 cursor-pointer">{book.category}</span>                        
                       </div>
-                      <button className="mt-3 bg-red-500" onClick={() => vaiAlLibro(book.asin)}>
+                      <button className="my-3 bg-[#874CCC]" onClick={() => vaiAlLibro(book.asin)}>
                         DEATAILS
                       </button>
                   </div>

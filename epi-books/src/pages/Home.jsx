@@ -3,7 +3,7 @@ import Button from '../components/Button';
 import ButtonType from '../components/ButtonType';
 
 
-export default function Home({ type, setType, testo}) {
+export default function Home({type, setType, testo}) {
     return (
         <>
             <Welcome />
