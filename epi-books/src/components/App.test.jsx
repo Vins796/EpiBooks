@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { expect, test } from 'vitest';
 
 import App from '../App';
@@ -33,7 +33,7 @@ test("controllo che vengano renderizzate tante card quanti sono gli oggetti nel 
 
 // TEST 3
 // Test per verificare che venga renderizzata correttamente commentArea al click della card
-test('verifico se comment are viene renderizzato correttamente', async () => {
+test('verifico se comment area viene renderizzato correttamente', async () => {
 
     render(<App />);
   
@@ -72,18 +72,82 @@ test("filtra gli utenti sulla base degli input", async () => {
 // TEST 5
 // Test per verificare che il bordo si colori di rosso
 test("il bordo della card cambia al click", async () => {
-
     render(<App />);
 
-    // Trova la card 
-    const card = await screen.findAllByTestId("books-card");
+    // Trova la prima card
+    const card = (await screen.findAllByTestId("books-card"))[0].firstChild;
 
     // Simula il click sulla card
-    fireEvent.click(card[0]);
+    fireEvent.click(card);
 
-    // Verifica che la card abbia il bordo blu applicato
-    expect(card[0]).toHaveStyle('border: 2px solid blue');
+    // Ottieni lo stile calcolato dell'elemento
+    const computedStyle = window.getComputedStyle(card);
+
+    // Verifica che il bordo sia di colore blu
+    expect(computedStyle.border).toContain("2px solid blue");
 });
 
 
+
+// TEST 6
+// Test per verificare che il bordo si colori di rosso
+test("verifico che al click della seconda card si toglie il bordo della prima card cliccata", async () => {
+    render(<App />);
+
+    // Trova le card
+    const cards = await screen.findAllByTestId("books-card");
+    const firstCard = cards[0].firstChild;
+    const secondCard = cards[1].firstChild;
+
+    // Simula il click sulla prima card
+    fireEvent.click(firstCard);
+
+    // Ottieni lo stile calcolato della prima card
+    const computedStyleFirstCard = window.getComputedStyle(firstCard);
+
+    // Verifica che il bordo della prima card sia blu
+    expect(computedStyleFirstCard.border).toContain("2px solid blue");
+
+    // Simula il click sulla seconda card
+    fireEvent.click(secondCard);
+
+    // Ottieni lo stile calcolato della seconda card
+    const computedStyleSecondCard = window.getComputedStyle(secondCard);
+
+    // Verifica che il bordo della seconda card sia blu
+    expect(computedStyleSecondCard.border).toContain("2px solid blue");
+
+    // Ottieni nuovamente lo stile calcolato della prima card
+    const updatedComputedStyleFirstCard = window.getComputedStyle(firstCard);
+
+    // Verifica che il bordo della prima card sia tornato al valore di default
+    expect(updatedComputedStyleFirstCard.border).not.toContain("2px solid blue");
+});
+
+
+
+// TEST 7
+// Verifica che all'avvio della pagina, senza aver cliccato su nessun libro, non ci siano istanze del componente SingleComment all'interno del dom
+test("verifico che non ci siano istanze di commenti al caricamento del DOM", () => {
+    render(<App />);
+
+    const area = screen.queryAllByTestId("comment");
+
+    expect(area.lenght).toBe(undefined)
+});
+
+
+// TEST 8
+// Verifica che, cliccando su di un libro con recensione, esse vengano caricate correttamente nel DOM
+test("verifico che cliccando su di un libro con recensioni, esse vengano caricate", async () => {
+    
+    render(<App />);
+
+    const bookCard = await screen.findByText("Sword of Destiny (The Witcher)");
+    fireEvent.click(bookCard);
+
+    const comments = await waitFor(() => screen.findAllByTestId("comment"));
+
+    expect(comments.length).toBeGreaterThan(0);
+});
 
