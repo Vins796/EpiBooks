@@ -7,11 +7,13 @@ import Welcome from './Welcome';
 // TEST 1
 // Test per verificare che venga renderizzat il banner di benvenuto
 test("verifica che un elemento appaia dopo un clic", async () => {
+    // Renderizzo APP
     render(<Welcome />);
 
     // Cerchiamo un elemento nel documento che contiene il testo
     const messaggioBenvenuto = screen.getByText(/Sfoglia il catalogo/i);   
     
+    // Mi aspetto che messaggioBenvenuto sia presente nel documento
     expect(messaggioBenvenuto).toBeInTheDocument();
 });
 
@@ -19,13 +21,13 @@ test("verifica che un elemento appaia dopo un clic", async () => {
 // TEST 2
 // Test per verificare che vengano renderizzati i libri
 test("controllo che vengano renderizzate tante card quanti sono gli oggetti nel file json", async () => {
-
+    // Renderizzo APP
     render(<App />);
 
     // Attendi che vengano trovati tutti gli elementi
     const books = await screen.findAllByTestId("books-card");
 
-    // Verifica che ci siano 10 libri renderizzati
+    // Verifica che ci siano 150 libri renderizzati
     expect(books).toHaveLength(150);
     
 });
@@ -33,15 +35,19 @@ test("controllo che vengano renderizzate tante card quanti sono gli oggetti nel 
 
 // TEST 3
 // Test per verificare che venga renderizzata correttamente commentArea al click della card
-test('verifico se comment area viene renderizzato correttamente', async () => {
-
+test('verifico se commentArea viene renderizzato correttamente', async () => {
+    // Renderizzo APP
     render(<App />);
-  
+    
+    // Cerco il testo specifico della card
     const card = await screen.findByText("Sword of Destiny (The Witcher)");
+    // Simulo il click sulla card
     fireEvent.click(card);
-  
+    
+    // Cerco l'elemento commentArea tramite il testo
     const CommentArea = screen.getByText(/Aggiungi Commento/i);
-  
+
+    // Mi aspetto che CommentArea sia presente nel documento
     expect(CommentArea).toBeInTheDocument();
 });
 
@@ -49,29 +55,30 @@ test('verifico se comment area viene renderizzato correttamente', async () => {
 // TEST 4
 // Test per verificare il filtro degli utenti in base all'input
 test("filtra gli utenti sulla base degli input", async () => {
-
+    // Renderizzo APP
     render(<App />);
 
     // Trova l'input di ricerca utilizzando il suo attributo placeholder
     const input = screen.getByPlaceholderText(/Inserisci libro/i);
 
-    // Simula il cambiamento dell'input con il valore "Leanne"
+    // Simula il cambiamento dell'input con il valore "the last"
     fireEvent.change(input, { target: { value: "the last" } });
 
-    // Attendi che vengano trovati tutti gli elementi "heading" di livello 3 (h3)
+    // Attendi che vengano trovati tutti gli elementi
     const filteredCards = await screen.findAllByTestId("books-card");
 
-    // Verifica che ci sia un solo utente renderizzato
+    // Verifica che ci siano due elementi presenti
     expect(filteredCards).toHaveLength(2);
 
-    // Verifica che l'utente "Leanne Graham" sia presente nella lista
+    // VMi aspetto che l'emento sia presente nel documento
     expect(screen.getByText("The Last Wish: Introducing the Witcher")).toBeInTheDocument();
 });
 
 
 // TEST 5
-// Test per verificare che il bordo si colori di rosso
+// Test per verificare che il bordo si colori di blue
 test("il bordo della card cambia al click", async () => {
+    // Renderizzo APP
     render(<App />);
 
     // Trova la prima card
@@ -88,10 +95,10 @@ test("il bordo della card cambia al click", async () => {
 });
 
 
-
 // TEST 6
-// Test per verificare che il bordo si colori di rosso
+// Test per verificare che al click della seonda card 
 test("verifico che al click della seconda card si toglie il bordo della prima card cliccata", async () => {
+    // Renderizzo APP
     render(<App />);
 
     // Trova le card
@@ -127,20 +134,23 @@ test("verifico che al click della seconda card si toglie il bordo della prima ca
 
 
 // TEST 7
-// Verifica che all'avvio della pagina, senza aver cliccato su nessun libro, non ci siano istanze del componente SingleComment all'interno del dom
+//Verifica che all'avvio della pagina, senza aver cliccato su nessun libro, non ci siano istanze del componente SingleComment all'interno del dom
 test("verifico che non ci siano istanze di commenti al caricamento del DOM", () => {
+    // Renderizzo APP
     render(<App />);
 
     const area = screen.queryAllByTestId("comment");
+    const text = screen.queryByText(/rate/i);
 
-    expect(area.lenght).toBe(undefined)
+    expect(area[0]).toBe(undefined);
+    expect(text).not.toBeInTheDocument();
 });
 
 
 // TEST 8
 // Verifica che, cliccando su di un libro con recensione, esse vengano caricate correttamente nel DOM
 test("verifico che cliccando su di un libro con recensioni, esse vengano caricate", async () => {
-    
+    // Renderizzo APP
     render(<App />);
 
     const bookCard = await screen.findByText("Sword of Destiny (The Witcher)");
@@ -148,6 +158,8 @@ test("verifico che cliccando su di un libro con recensioni, esse vengano caricat
 
     const comments = await waitFor(() => screen.findAllByTestId("comment"));
 
+    // Mi aspetto che ci siano più di 0 commenti
+    // Se il test non funziona è perché mancano i commenti
     expect(comments.length).toBeGreaterThan(0);
 });
 
