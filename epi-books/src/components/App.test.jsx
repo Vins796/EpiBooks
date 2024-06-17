@@ -5,8 +5,8 @@ import App from '../App';
 import Welcome from './Welcome';
 
 // TEST 1
-// Test per verificare che venga renderizzat il banner di benvenuto
-test("verifica che un elemento appaia dopo un clic", async () => {
+// Test per verificare che venga renderizzato il banner di benvenuto
+test("verifica che il messaggio di benvenuto sia presente nel DOM", async () => {
     // Renderizzo APP
     render(<Welcome />);
 
@@ -76,7 +76,7 @@ test("filtra gli utenti sulla base degli input", async () => {
 
 
 // TEST 5
-// Test per verificare che il bordo si colori di blue
+// Test per verificare che il bordo si colori di blu
 test("il bordo della card cambia al click", async () => {
     // Renderizzo APP
     render(<App />);
@@ -132,17 +132,16 @@ test("verifico che al click della seconda card si toglie il bordo della prima ca
 });
 
 
-
 // TEST 7
 //Verifica che all'avvio della pagina, senza aver cliccato su nessun libro, non ci siano istanze del componente SingleComment all'interno del dom
 test("verifico che non ci siano istanze di commenti al caricamento del DOM", () => {
     // Renderizzo APP
     render(<App />);
 
-    const area = screen.queryAllByTestId("comment");
+    const area = screen.queryByText(/scrivi recensione/i);
     const text = screen.queryByText(/rate/i);
 
-    expect(area[0]).toBe(undefined);
+    expect(area).not.toBeInTheDocument();
     expect(text).not.toBeInTheDocument();
 });
 
